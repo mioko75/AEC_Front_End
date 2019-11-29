@@ -48,32 +48,33 @@ var coutbatterie = 15;
 var total;
 var livraison;
 
-
 //Etape 2 Lecture(demande à l'usager)
 
-RaspBerryPi= (prompt("Voulez-vous le controleur RaspBerry Pi ou non?"));
-RaspBerryPiZero= (prompt("Voulez-vous le controleur RaspBerry Pi Zero ou non?"));
-nbMoteur= Number(prompt("Entrer le nombre de moteur désirer entre 2 et 24"));
-cam (prompt("Voulez-vous une cam oui ou non?"));
-led (prompt("Voulez-vous une lumi;ere au LEDS pour les yeux oui ou non?"));
+RaspBerryPi = (prompt("Voulez-vous le controleur RaspBerry Pi ou non?"));
+RaspBerryPiZero = (prompt("Voulez-vous le controleur RaspBerry Pi Zero ou non?"));
+nbMoteur = Number(prompt("Entrer le nombre de moteur désirer entre 2 et 24"));
+cam = (prompt("Voulez-vous une cam oui ou non?"));
+led = (prompt("Voulez-vous une lumi;ere au LEDS pour les yeux oui ou non?"));
 
 //Etape 3 Les calcules
 
+total = coutPi + coutPiZero + coutMoteur  + coutCam + coutLed + coutfilament + coutbatterie;
 livraison = total * .15;
-totalMoteur =nbMoteur * 5;
+totalMoteur = (nbMoteur * 5);
 
 
 //valider les choix
 
-if (RaspBerryPi === "oui" ) {
+if (RaspBerryPi === "oui" || RaspBerryPiZero ==="oui" ) {
     if(cam === "oui"){
-        coutCam = 35;
-        if(led === "oui"){
-            coutLed = 10;
-        }
-        else {
-            coutLed = 0;
-        }
+        coutCam = +35;
+
+    }
+    else if(led === "oui"){
+        coutLed = +10;
+    }
+    else {
+        coutLed = 0;
     }
 }
 
@@ -89,4 +90,4 @@ else {
     }
 }
 
-document.write("Alors pour votre Robot le coût est de " + (RaspBerryPi + coutCam + coutbatterie + coutfilament + coutLed + coutMoteur ));
+document.write("Alors pour votre Robot le coût est de " + total + "plus les frais de livraison : " + livraison);
