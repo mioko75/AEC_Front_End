@@ -1,19 +1,42 @@
 /** created by Sophie Bergeron **/
 
 /**
- Calculer le prix des assurances pour un véhicule.
- Pour un garçon entre 16 et 25 ans, le prix des assurances est de 5 % de la valeur du véhicule.
- S’il est plus vieux, le taux sera de 3 %.
- Pour une fille entre 16 et 25 ans, le taux est de 3 % et de 2% pour une fille plus âgée.
+ Vous devez compléter un programme qui permet de calculer la facture pour l’achat d’un robot imprimable en 3 dimensions.
+
+ L’usager doit sélectionner le contrôleur
+ 55$ pour un RaspBerry Pi
+ 15$ pour un Raspberry Pi Zero
+
+ L’usager doit décider du nombre de moteurs entre 2 et 24.
+ Un moteur coûte 5$
+
+ L’usager décide s’il veut une caméra USB ou non
+ La caméra coûte 35$
+
+ L’usager décide s’il veut une matrice de LEDS pour les yeux
+ La matrice coûte 10$ pour les deux yeux.
+
+ Il faut ensuite ajouter 20$ pour le filament 3D.
+ Il faut ajouter 15$ pour la batterie USB.
+
+ RasPiBot aimerait que votre programme affiche
+
+ un résumé de l’achat
+ ex: “Robot avec Raspberry Pi Zero, 10 moteurs, pas de caméra, pas de matrice de LEDS.”
+ le prix
+ le prix avec la livraison de 15%.
+
 
  */
 
 //Etape 1 trouver les variables
 
 var RaspBerryPi = "oui";
-var coutPi;
+var coutPi = 55;
+var NomPi = "RaspBerry Pi";
 var RaspBerryPiZero = "oui";
-var coutPiZero;
+var coutPiZero = 15;
+var PiZero = "Raspberry Pi Zero";
 var nbMoteur;
 var coutMoteur;
 var cam = "oui";
@@ -31,8 +54,8 @@ var livraison;
 RaspBerryPi= (prompt("Voulez-vous le controleur RaspBerry Pi ou non?"));
 RaspBerryPiZero= (prompt("Voulez-vous le controleur RaspBerry Pi Zero ou non?"));
 nbMoteur= Number(prompt("Entrer le nombre de moteur désirer entre 2 et 24"));
-cam (prompt("Voulez-vous une cam ou non?"));
-led (prompt("Voulez-vous une lumi;ere au LEDS pour les yeux ou non?"));
+cam (prompt("Voulez-vous une cam oui ou non?"));
+led (prompt("Voulez-vous une lumi;ere au LEDS pour les yeux oui ou non?"));
 
 //Etape 3 Les calcules
 
@@ -44,27 +67,26 @@ totalMoteur =nbMoteur * 5;
 
 if (RaspBerryPi === "oui" ) {
     if(cam === "oui"){
-        coutCam = 10;
-    }
-    else {
-        coutcam = 0;
-    }
-if (sexe.toUpperCase() === "M") {
-    if(age >= 16 && age <= 25){
-        prime = (valAuto * .05);
-    }
-    else {
-        prime = (valAuto * .03);
+        coutCam = 35;
+        if(led === "oui"){
+            coutLed = 10;
+        }
+        else {
+            coutLed = 0;
+        }
     }
 }
 
-else{
-    if(age >= 16 && age <= 25){
-        prime = (valAuto * .03);
-    }
-    else {
-        prime = (valAuto * .02);
+else {
+    if(cam === "oui"){
+        coutCam = 35;
+        if(led === "oui"){
+            coutLed = 10;
+        }
+        else {
+            coutLed = 0;
+        }
     }
 }
 
-document.write("Votre prime est de : " + prime);
+document.write("Alors pour votre Robot le coût est de " + (RaspBerryPi + coutCam + coutbatterie + coutfilament + coutLed + coutMoteur ));
